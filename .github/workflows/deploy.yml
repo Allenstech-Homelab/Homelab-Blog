@@ -1,4 +1,4 @@
-name: Deploy Astro Blog
+name: Deploy Astro Blog to GitHub Pages
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -24,9 +24,8 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # Customize this step to deploy to your server or hosting
-      - name: Deploy to server
-        run: |
-          # Example: copy to a web root directory
-          # Adjust the path as needed for your environment
-          cp -r dist/* /var/www/html/
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
