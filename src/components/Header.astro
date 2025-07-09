@@ -1,26 +1,15 @@
 ---
-import { Link } from 'astro:components';
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
-];
-
 ---
 
 <header>
   <div class="branding">
-    <h1>My Astro Blog</h1>
+    <h1>Michaels Blog</h1>
   </div>
   <nav>
     <ul>
-      {navLinks.map(link => (
-        <li>
-          <Link href={link.href}>{link.label}</Link>
-        </li>
-      ))}
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/posts">Posts</a></li>
     </ul>
   </nav>
 </header>
