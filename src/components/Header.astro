@@ -1,0 +1,56 @@
+---
+import { Link } from 'astro:components';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+---
+
+<header>
+  <div class="branding">
+    <h1>My Astro Blog</h1>
+  </div>
+  <nav>
+    <ul>
+      {navLinks.map(link => (
+        <li>
+          <Link href={link.href}>{link.label}</Link>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+  }
+
+  .branding h1 {
+    margin: 0;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+</style>
