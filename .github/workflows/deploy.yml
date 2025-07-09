@@ -1,0 +1,32 @@
+name: Deploy Astro Blog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      # Customize this step to deploy to your server or hosting
+      - name: Deploy to server
+        run: |
+          # Example: copy to a web root directory
+          # Adjust the path as needed for your environment
+          cp -r dist/* /var/www/html/
